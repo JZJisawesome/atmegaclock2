@@ -30,7 +30,7 @@ add_compile_definitions(F_CPU=16000000)
 configure_file(include/cmake_config_info.h.in cmake_config_info.h)
 
 #Sources and final executable name
-add_executable(atmegaclock2 include/cmake_config_info.h.in include/eeprom.h include/buzzer.h src/main.c src/eeprom.c src/buzzer.c)
+add_executable(atmegaclock2 include/cmake_config_info.h.in include/eeprom.h include/buzzer.h include/i2c.h include/lcd.h include/rtc.h include/ui/alarm.h include/ui/clock.h include/ui/menu.h include/ui/ui.h src/main.c src/eeprom.c src/buzzer.c src/i2c.c src/lcd.c src/rtc.c src/ui/alarm.c src/ui/clock.c src/ui/menu.c src/ui/ui.c)
 
 #Include directories
 target_include_directories(atmegaclock2 PUBLIC "build/" "include/")
