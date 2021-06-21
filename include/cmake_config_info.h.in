@@ -1,0 +1,2 @@
+#define VERSION_MAJOR @atmegaclock2_VERSION_MAJOR@
+#define VERSION_MINOR @atmegaclock2_VERSION_MINOR@
