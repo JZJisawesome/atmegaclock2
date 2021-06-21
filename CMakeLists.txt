@@ -20,10 +20,11 @@ set(CMAKE_STRIP                     avr-strip)
 
 #Compiler flags
 #TODO add -fdata-sections and -ffunction-sections?
-set(CMAKE_C_FLAGS           "-Wall -DF_CPU=16000000 -mmcu=atmega328p -std=gnu17")#Common flags
+set(CMAKE_C_FLAGS           "-Wall -mmcu=atmega328p -std=gnu17")#Common flags
 set(CMAKE_C_FLAGS_DEBUG     "-Og -g")
 set(CMAKE_C_FLAGS_RELEASE   "-Ofast -fomit-frame-pointer -pipe -flto -fuse-linker-plugin -fgraphite-identity -floop-nest-optimize -fipa-pta -fno-semantic-interposition -fdevirtualize-at-ltrans -fno-common -fno-plt -DNDEBUG")
 #set(CMAKE_EXE_LINKER_FLAGS )
+add_compile_definitions(F_CPU=16000000)
 
 #CMake config header for atmegaclock2 to reference
 configure_file(include/cmake_config_info.h.in cmake_config_info.h)
@@ -34,4 +35,6 @@ add_executable(atmegaclock2 include/cmake_config_info.h.in src/main.c)
 #Include directories
 target_include_directories(atmegaclock2 PUBLIC "build/" "include/")
 
-#Special targets
+#Custom commands/targets
+add_custom_command(TARGET atmegaclock2 POST_BUILD COMMAND ${CMAKE_OBJCOPY} -O ihex atmegaclock2 atmegaclock2.hex)
+add_custom_target(flash DEPENDS atmegaclock2.hex COMMAND avrdude -c stk500v1 -P /dev/ttyUSB0 -p atmega328p -U flash:w:atmegaclock2.hex:i -U eeprom:w:0x00,0x05:m -b19200 -v)
