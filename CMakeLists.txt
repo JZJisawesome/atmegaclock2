@@ -37,4 +37,4 @@ target_include_directories(atmegaclock2 PUBLIC "build/" "include/")
 #Custom commands/targets
 add_custom_command(TARGET atmegaclock2 POST_BUILD COMMAND ${CMAKE_OBJCOPY} -O ihex atmegaclock2 atmegaclock2.hex)
 add_custom_target(flash DEPENDS atmegaclock2.hex COMMAND avrdude -c stk500v1 -P /dev/ttyUSB0 -p atmega328p -U flash:w:atmegaclock2.hex:i -U eeprom:w:0x00,0x05:m -b19200 -v)
-add_custom_target(showSize DEPENDS atmegaclock2 COMMAND avr-size -C --mcu=atmega328p atmegaclock2)
+add_custom_target(showSize DEPENDS atmegaclock2 COMMAND avr-size -Ax ./atmegaclock2)
