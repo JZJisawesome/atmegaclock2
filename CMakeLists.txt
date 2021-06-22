@@ -19,7 +19,6 @@ set(CMAKE_SIZE                      avr-size)
 set(CMAKE_STRIP                     avr-strip)
 
 #Compiler flags
-#TODO add -fdata-sections and -ffunction-sections?
 set(CMAKE_C_FLAGS           "-Wall -mmcu=atmega328p -std=gnu17")#Common flags
 set(CMAKE_C_FLAGS_DEBUG     "-Og -g")
 set(CMAKE_C_FLAGS_RELEASE   "-Ofast -fomit-frame-pointer -pipe -flto -fuse-linker-plugin -fgraphite-identity -floop-nest-optimize -fipa-pta -fno-semantic-interposition -fdevirtualize-at-ltrans -fno-common -fno-plt -DNDEBUG")

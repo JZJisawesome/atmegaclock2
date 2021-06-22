@@ -1,2 +1,8 @@
-#define VERSION_MAJOR @atmegaclock2_VERSION_MAJOR@
-#define VERSION_MINOR @atmegaclock2_VERSION_MINOR@
+/* CMake generated header file
+ * By: John Jekel
+ *
+ * Provides the information about the build to other code.
+*/
+
+#define CMAKE_VERSION_MAJOR_STR "@atmegaclock2_VERSION_MAJOR@"
+#define CMAKE_VERSION_MINOR_STR "@atmegaclock2_VERSION_MINOR@"

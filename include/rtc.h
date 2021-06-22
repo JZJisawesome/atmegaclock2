@@ -13,6 +13,8 @@
 #include <stdint.h>
 
 //RTC Communication
+void RTC_init();
+
 //Refreshing provides getter functions with new values
 #define RTC_refreshAll()            do {RTC_refreshDataRange(0x0, 19);} while (0)
 #define RTC_refreshTime()           do {RTC_refreshDataRange(0x0, 3);} while (0)
